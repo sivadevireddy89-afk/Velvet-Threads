@@ -1,4 +1,4 @@
-// Velvet-Threads Boutique - Main JavaScript
+// Rivaayah Boutique - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
@@ -153,8 +153,15 @@ function initScrollAnimations() {
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if href is just "#" or empty
+            if (!href || href === '#' || href.length <= 1) {
+                return;
+            }
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             
             if (target) {
                 const headerOffset = 80;
