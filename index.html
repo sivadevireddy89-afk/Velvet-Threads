@@ -20,6 +20,14 @@
     <!-- Google Sign-In API -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <!-- Phone.email SDK -->
+    <script src="https://www.phone.email/sign_in_button_v1.js" defer></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -425,6 +433,7 @@
         </div>
     </footer>
 
+    <script src="firebase-config.js"></script>
     <script src="script.js"></script>
 
     <!-- Login/Register Modal -->
@@ -450,6 +459,12 @@
                         <i class="fab fa-google"></i>
                         Continue with Google
                     </button>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <div class="pe_signin_button" data-client-id="17391604307209841831"></div>
                 </div>
             </div>
             
@@ -463,6 +478,12 @@
                         <i class="fab fa-google"></i>
                         Sign up with Google
                     </button>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <div class="pe_signin_button" data-client-id="17391604307209841831"></div>
                 </div>
             </div>
         </div>
