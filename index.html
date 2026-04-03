@@ -17,6 +17,9 @@
     <!-- Lottie Player -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -38,6 +41,7 @@
             </a>
             
             <div class="nav-right">
+                <a href="#" class="nav-link auth-link" onclick="openAuthModal('login')">Login</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="#" class="nav-link shop-link">Shop Online</a>
                 <a href="#" class="cart-link" aria-label="Cart">
@@ -422,6 +426,47 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Login/Register Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-overlay" onclick="closeAuthModal()"></div>
+        <div class="auth-container">
+            <button class="auth-close" onclick="closeAuthModal()" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Create Account</button>
+            </div>
+            
+            <!-- Login Tab -->
+            <div class="auth-content active" id="loginTab">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Sign in to access your account</p>
+                
+                <div class="auth-methods">
+                    <button class="auth-btn google-btn" onclick="signInWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Register Tab -->
+            <div class="auth-content" id="registerTab">
+                <h2>Create Account</h2>
+                <p class="auth-subtitle">Join Velvets & Threads</p>
+                
+                <div class="auth-methods">
+                    <button class="auth-btn google-btn" onclick="signInWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        Sign up with Google
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
