@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Collection | Velvets & Threads - Handcrafted Indian Luxury</title>
+    <meta name="description" content="Explore Velvets & Threads' curated collection of handcrafted Indian textiles, bridal wear, festive couture, and artisanal accessories.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="collections.css">
+</head>
+<body>
+    <!-- Navigation - Sentimentalist Style -->
+    <nav class="navbar sentimentalist-nav" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">Our Story</a></li>
+                    <li><a href="collections.html" class="nav-link active">Our Collection</a></li>
+                    <li><a href="index.html#lookbook" class="nav-link">Lookbook</a></li>
+                </ul>
+            </div>
+            
+            <a href="index.html" class="logo-center">
+                <span class="logo-text">Velvets & Threads</span>
+            </a>
+            
+            <div class="nav-right">
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="#" class="nav-link shop-link">Shop Online</a>
+                <a href="#" class="cart-link" aria-label="Cart">
+                    <span>Cart</span>
+                    <span class="cart-count">(0)</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <span class="page-tag">Curated With Love</span>
+            <h1 class="page-title">Our Collection</h1>
+            <p class="page-description">Each piece in our collection is a testament to India's rich textile heritage. From handwoven Banarasi silks to intricate Zardozi embroidery, discover artisanal luxury that transcends trends.</p>
+        </div>
+        <div class="page-header-image">
+            <img src="Images/474746100_17851518990384756_3512590174641674843_n.jpg" alt="Velvets & Threads Collection">
+        </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <div class="filter-container">
+            <div class="filter-groups">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All Collections</button>
+                    <button class="filter-btn" data-filter="bridal">Bridal</button>
+                    <button class="filter-btn" data-filter="festive">Festive</button>
+                    <button class="filter-btn" data-filter="casual">Casual</button>
+                    <button class="filter-btn" data-filter="accessories">Accessories</button>
+                </div>
+                <div class="filter-dropdown">
+                    <select id="sortSelect">
+                        <option value="featured">Featured</option>
+                        <option value="newest">New Arrivals</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Collection Grid -->
+    <main class="collection-main">
+        <div class="collection-container">
+            
+            <!-- Collection Stats -->
+            <div class="collection-stats">
+                <span>Showing <strong>24</strong> of <strong>156</strong> pieces</span>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="collection-grid" id="collectionGrid">
+                
+                <!-- Bridal Collection Items -->
+                <article class="collection-item" data-category="bridal">
+                    <div class="item-image">
+                        <img src="Images/474939519_17851519008384756_4205068427304533907_n.jpg" alt="Red Banarasi Bridal Lehenga">
+                        <span class="item-badge">Bridal</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Banaras Weaves</span>
+                        <h3 class="item-name">Scarlet Dream Lehenga</h3>
+                        <p class="item-details">Pure Katan Silk • Handwoven • Zardozi Work</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹2,85,000</span>
+                            <span class="item-availability">Made to Order (8 weeks)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="bridal">
+                    <div class="item-image">
+                        <img src="Images/480298680_17855264841384756_8349984582560661037_n.jpg" alt="Ivory Bridal Lehenga">
+                        <span class="item-badge">Bridal</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Lucknow Heritage</span>
+                        <h3 class="item-name">Ivory Opulence Lehenga</h3>
+                        <p class="item-details">Pure Georgette • Chikankari • Pearl Embellished</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹1,95,000</span>
+                            <span class="item-availability">Made to Order (10 weeks)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="bridal">
+                    <div class="item-image">
+                        <img src="Images/610680162_17894066508384756_578785805163720164_n.jpg" alt="Pink Bridal Saree">
+                        <span class="item-badge">Bridal</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Kanchipuram Silks</span>
+                        <h3 class="item-name">Rose Gold Kanjeevaram</h3>
+                        <p class="item-details">Pure Silk • Temple Border • Gold Zari</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹1,45,000</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Festive Collection Items -->
+                <article class="collection-item" data-category="festive">
+                    <div class="item-image">
+                        <img src="Images/627153248_17898122595384756_1185936028602160042_n.jpg" alt="Festive Anarkali">
+                        <span class="item-badge">Festive</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Jaipur Prints</span>
+                        <h3 class="item-name">Sanganeri Anarkali</h3>
+                        <p class="item-details">Cotton Silk • Handblock Print • Gota Work</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹28,500</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="festive">
+                    <div class="item-image">
+                        <img src="Images/627545513_17898122586384756_7012242174626757533_n.jpg" alt="Festive Saree">
+                        <span class="item-badge">Festive</span>
+                        <span class="item-badge new">New</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Chanderi Weaves</span>
+                        <h3 class="item-name">Teal Chanderi Saree</h3>
+                        <p class="item-details">Chanderi Silk • Handwoven • Zari Border</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹42,000</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="festive">
+                    <div class="item-image">
+                        <img src="Images/641272934_17900907675384756_6158788547099606262_n.jpg" alt="Festive Lehenga">
+                        <span class="item-badge">Festive</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Gujarat Embroidery</span>
+                        <h3 class="item-name">Maroon Bandhani Lehenga</h3>
+                        <p class="item-details">Silk Georgette • Bandhani • Mirror Work</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹65,000</span>
+                            <span class="item-availability">Made to Order (4 weeks)</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Casual Collection Items -->
+                <article class="collection-item" data-category="casual">
+                    <div class="item-image">
+                        <img src="Images/642348372_17900907672384756_347377254340002553_n.jpg" alt="Cotton Kurta">
+                        <span class="item-badge">Casual</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Bagru Prints</span>
+                        <h3 class="item-name">Indigo Handblock Kurta</h3>
+                        <p class="item-details">Pure Cotton • Vegetable Dye • Handprinted</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹8,500</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="casual">
+                    <div class="item-image">
+                        <img src="Images/642485940_17900907657384756_9070226320663779881_n.jpg" alt="Linen Saree">
+                        <span class="item-badge">Casual</span>
+                        <span class="item-badge bestseller">Bestseller</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Bengal Looms</span>
+                        <h3 class="item-name">Earthy Linen Saree</h3>
+                        <p class="item-details">Pure Linen • Handwoven • Natural Dye</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹15,000</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="casual">
+                    <div class="item-image">
+                        <img src="Images/610680162_17894066508384756_578785805163720164_n.jpg" alt="Silk Kurti">
+                        <span class="item-badge">Casual</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Mysore Silks</span>
+                        <h3 class="item-name">Ivory Tussar Kurti</h3>
+                        <p class="item-details">Tussar Silk • Handwoven • Minimal Embroidery</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹12,500</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Accessories -->
+                <article class="collection-item" data-category="accessories">
+                    <div class="item-image">
+                        <img src="Images/627153248_17898122595384756_1185936028602160042_n.jpg" alt="Dupatta">
+                        <span class="item-badge">Accessories</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Varanasi Weaves</span>
+                        <h3 class="item-name">Gold Tissue Dupatta</h3>
+                        <p class="item-details">Tissue Silk • Banarasi Weave • Gold Zari</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹22,000</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="accessories">
+                    <div class="item-image">
+                        <img src="Images/627545513_17898122586384756_7012242174626757533_n.jpg" alt="Potli Bag">
+                        <span class="item-badge">Accessories</span>
+                        <span class="item-badge new">New</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Rajasthan Crafts</span>
+                        <h3 class="item-name">Embroidered Potli Bag</h3>
+                        <p class="item-details">Silk • Zardozi Work • Beaded Handle</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹8,500</span>
+                            <span class="item-availability">In Stock</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="collection-item" data-category="accessories">
+                    <div class="item-image">
+                        <img src="Images/641272934_17900907675384756_6158788547099606262_n.jpg" alt="Jewelry">
+                        <span class="item-badge">Accessories</span>
+                        <div class="item-actions">
+                            <button class="action-btn" aria-label="Quick view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" aria-label="Share"><i class="fas fa-share-alt"></i></button>
+                            <button class="action-btn" aria-label="Add to cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <span class="item-artisan">Hyderabad Jewels</span>
+                        <h3 class="item-name">Pearl & Kundan Set</h3>
+                        <p class="item-details">Freshwater Pearls • Kundan Work • Gold Plated</p>
+                        <div class="item-footer">
+                            <span class="item-price">₹35,000</span>
+                            <span class="item-availability">Made to Order (2 weeks)</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more">
+                <button class="btn btn-outline-dark" id="loadMore">Load More Pieces</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Featured Artisans -->
+    <section class="artisans-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-tag">Master Craftspeople</span>
+                <h2 class="section-title">Our Artisans</h2>
+                <p class="section-desc">We partner with master craftspeople across India, preserving traditional techniques while creating contemporary designs.</p>
+            </div>
+
+            <div class="artisans-grid">
+                <div class="artisan-card">
+                    <div class="artisan-image">
+                        <img src="Images/474939519_17851519008384756_4205068427304533907_n.jpg" alt="Banaras Weavers">
+                    </div>
+                    <div class="artisan-info">
+                        <h3>Banaras Weaves</h3>
+                        <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Varanasi, Uttar Pradesh</p>
+                        <p class="artisan-craft">Heritage Banarasi Silk Weaving since 1890</p>
+                    </div>
+                </div>
+
+                <div class="artisan-card">
+                    <div class="artisan-image">
+                        <img src="Images/480298680_17855264841384756_8349984582560661037_n.jpg" alt="Chikankari Artists">
+                    </div>
+                    <div class="artisan-info">
+                        <h3>Lucknow Heritage</h3>
+                        <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Lucknow, Uttar Pradesh</p>
+                        <p class="artisan-craft">Authentic Chikankari Embroidery</p>
+                    </div>
+                </div>
+
+                <div class="artisan-card">
+                    <div class="artisan-image">
+                        <img src="Images/485270469_17859637713384756_8869758726549976018_n.jpg" alt="Kanchipuram Weavers">
+                    </div>
+                    <div class="artisan-info">
+                        <h3>Kanchipuram Silks</h3>
+                        <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Kanchipuram, Tamil Nadu</p>
+                        <p class="artisan-craft">Traditional Temple Saree Weaving</p>
+                    </div>
+                </div>
+
+                <div class="artisan-card">
+                    <div class="artisan-image">
+                        <img src="Images/485735424_17859637686384756_1545957075173752256_n.jpg" alt="Rajasthan Artisans">
+                    </div>
+                    <div class="artisan-info">
+                        <h3>Gujarat Embroidery</h3>
+                        <p class="artisan-location"><i class="fas fa-map-marker-alt"></i> Kutch, Gujarat</p>
+                        <p class="artisan-craft">Bandhani & Mirror Work Specialists</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Orders CTA -->
+    <section class="custom-cta">
+        <div class="custom-cta-content">
+            <span class="section-tag light">Bespoke Service</span>
+            <h2 class="section-title light">Can't Find What You're Looking For?</h2>
+            <p>We specialize in custom bridal and festive wear. Schedule an appointment with our design consultants to create your dream piece.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Book an Appointment</a>
+                <a href="#" class="btn btn-outline">Learn About Custom Orders</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">Velvets & Threads</span>
+                    </a>
+                    <p class="footer-desc">Celebrating India's textile heritage through sustainable, handcrafted luxury fashion.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/velvets_and_threads?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="collections.html">All Collections</a></li>
+                        <li><a href="#">Bridal Collection</a></li>
+                        <li><a href="#">Festive Wear</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="index.html#about">Our Story</a></li>
+                        <li><a href="#">Artisans</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact-info">
+                    <h4>Visit Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 12, Fashion Street, Kala Ghoda<br>Mumbai - 400001, India</p>
+                    <p><i class="fas fa-phone"></i> +91 22 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> hello@velvetsandthreads.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Velvets & Threads. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="collections.js"></script>
+
+    <!-- Image Slider Modal -->
+    <div class="image-slider-modal" id="imageSliderModal">
+        <div class="slider-overlay" onclick="closeImageSlider()"></div>
+        <div class="slider-container">
+            <button class="slider-close" onclick="closeImageSlider()" aria-label="Close slider">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="slider-nav slider-prev" onclick="changeSlide(-1)" aria-label="Previous image">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slider-main">
+                <img id="sliderMainImage" src="" alt="Product view">
+            </div>
+            <button class="slider-nav slider-next" onclick="changeSlide(1)" aria-label="Next image">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="slider-thumbnails" id="sliderThumbnails">
+                <!-- Thumbnails will be dynamically added -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
