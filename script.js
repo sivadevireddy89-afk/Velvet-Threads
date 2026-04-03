@@ -1,4 +1,4 @@
-// Rivaayah Boutique - Main JavaScript
+// Velvet-Threads Boutique - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
@@ -397,6 +397,327 @@ function initWhatsAppTimer() {
 }
 
 document.addEventListener('DOMContentLoaded', initWhatsAppTimer);
+
+// ===== Google Sign-In Configuration =====
+const GOOGLE_CLIENT_ID = '217484779229-gd0au2v1jr72dbt18fskqvd1cukdcoun.apps.googleusercontent.com'; // Replace with your actual Google Client ID
+
+// Initialize Google Sign-In
+function initGoogleSignIn() {
+    if (typeof google !== 'undefined' && google.accounts) {
+        google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: handleGoogleCredentialResponse,
+            auto_select: false,
+            cancel_on_tap_outside: true
+        });
+    }
+}
+
+// Handle Google Sign-In response
+function handleGoogleCredentialResponse(response) {
+    // Decode JWT token to get user info
+    const credential = response.credential;
+    const payload = JSON.parse(atob(credential.split('.')[1]));
+    
+    const user = {
+        name: payload.name,
+        email: payload.email,
+        picture: payload.picture,
+        method: 'google',
+        googleId: payload.sub
+    };
+    
+    loginUser(user);
+    closeAuthModal();
+    showNotification(`Welcome, ${user.name}!`);
+}
+
+// Trigger Google Sign-In
+function signInWithGoogle() {
+    // Wait for Google API to load if not ready
+    if (typeof google === 'undefined' || !google.accounts) {
+        showNotification('Loading Google Sign-In...');
+        
+        // Retry after a short delay
+        setTimeout(() => {
+            if (typeof google !== 'undefined' && google.accounts) {
+                initGoogleSignIn();
+                google.accounts.id.prompt((notification) => {
+                    handleGooglePrompt(notification);
+                });
+            } else {
+                // Use demo mode as fallback
+                useDemoLogin();
+            }
+        }, 1000);
+        return;
+    }
+    
+    // Initialize if not already done
+    initGoogleSignIn();
+    
+    // Show the prompt
+    google.accounts.id.prompt((notification) => {
+        handleGooglePrompt(notification);
+    });
+}
+
+function handleGooglePrompt(notification) {
+    if (notification.isNotDisplayed()) {
+        const reason = notification.getNotDisplayedReason();
+        console.log('Google Sign-In not displayed:', reason);
+        
+        if (reason === 'opt_out_or_no_session' || reason === 'browser_not_supported') {
+            // Use demo fallback
+            useDemoLogin();
+        } else {
+            showNotification('Google Sign-In unavailable. Check console for details.');
+            // Still allow demo login
+            setTimeout(() => useDemoLogin(), 1500);
+        }
+    } else if (notification.isSkippedMoment()) {
+        // User skipped, try again
+        showNotification('Please select an account to continue');
+    }
+}
+
+function useDemoLogin() {
+    showNotification('Using demo mode...');
+    
+    const mockUser = {
+        name: 'Demo User',
+        email: 'demo@velvetsandthreads.com',
+        picture: 'https://ui-avatars.com/api/?name=Demo+User&background=8B4513&color=fff',
+        method: 'google',
+        googleId: 'demo123'
+    };
+    
+    setTimeout(() => {
+        loginUser(mockUser);
+        closeAuthModal();
+        showNotification('Demo login successful!');
+    }, 800);
+}
+
+// ===== Authentication Modal =====
+function initAuthModal() {
+    const authModal = document.getElementById('authModal');
+    const authTabs = document.querySelectorAll('.auth-tab');
+    const authContents = document.querySelectorAll('.auth-content');
+    
+    // Tab switching
+    authTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTab = tab.dataset.tab;
+            
+            // Update tabs
+            authTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Update content
+            authContents.forEach(c => c.classList.remove('active'));
+            document.getElementById(`${targetTab}Tab`).classList.add('active');
+        });
+    });
+}
+
+// Open auth modal
+function openAuthModal(tab = 'login') {
+    const authModal = document.getElementById('authModal');
+    const authTabs = document.querySelectorAll('.auth-tab');
+    const authContents = document.querySelectorAll('.auth-content');
+    
+    // Set active tab
+    authTabs.forEach(t => {
+        t.classList.toggle('active', t.dataset.tab === tab);
+    });
+    authContents.forEach(c => {
+        c.classList.toggle('active', c.id === `${tab}Tab`);
+    });
+    
+    authModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Initialize Google Sign-In when modal opens
+    initGoogleSignIn();
+}
+
+// Close auth modal
+function closeAuthModal() {
+    const authModal = document.getElementById('authModal');
+    authModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Login user
+function loginUser(userData) {
+    const user = {
+        ...userData,
+        loggedIn: true,
+        loginTime: new Date().toISOString(),
+        id: userData.googleId
+    };
+    
+    // Save to localStorage
+    localStorage.setItem('velvetsUser', JSON.stringify(user));
+    
+    // Update UI
+    updateAuthUI(user);
+    
+    // Dispatch custom event for other components
+    window.dispatchEvent(new CustomEvent('userLoggedIn', { detail: user }));
+}
+
+// Logout user
+function logoutUser() {
+    // Clear Google Sign-In session if exists
+    if (typeof google !== 'undefined' && google.accounts) {
+        google.accounts.id.disableAutoSelect();
+    }
+    
+    localStorage.removeItem('velvetsUser');
+    updateAuthUI(null);
+    showNotification('Logged out successfully');
+    
+    // Dispatch custom event
+    window.dispatchEvent(new CustomEvent('userLoggedOut'));
+}
+
+// Update auth UI based on login state
+function updateAuthUI(user) {
+    const authLink = document.querySelector('.auth-link');
+    
+    if (!authLink) return;
+    
+    if (user && user.loggedIn) {
+        // Create user avatar if picture exists
+        const avatarHtml = user.picture 
+            ? `<img src="${user.picture}" alt="${user.name}" class="user-avatar" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover;">`
+            : '<i class="fas fa-user-circle" style="font-size: 20px;"></i>';
+        
+        // Show user name and dropdown
+        authLink.innerHTML = `
+            <div class="user-menu" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                ${avatarHtml}
+                <span style="max-width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${user.name}</span>
+                <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+            </div>
+        `;
+        
+        // Remove the onclick handler and add dropdown menu
+        authLink.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleUserMenu(user);
+        };
+    } else {
+        // Show login button
+        authLink.innerHTML = '<span>Login</span>';
+        authLink.onclick = (e) => {
+            e.preventDefault();
+            openAuthModal('login');
+        };
+    }
+}
+
+// Toggle user menu dropdown
+function toggleUserMenu(user) {
+    // Remove existing dropdown if any
+    const existingDropdown = document.querySelector('.user-dropdown');
+    if (existingDropdown) {
+        existingDropdown.remove();
+        return;
+    }
+    
+    // Create dropdown menu
+    const dropdown = document.createElement('div');
+    dropdown.className = 'user-dropdown';
+    dropdown.style.cssText = `
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--color-white);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        padding: 10px 0;
+        min-width: 180px;
+        z-index: 1000;
+        margin-top: 10px;
+    `;
+    
+    dropdown.innerHTML = `
+        <div style="padding: 10px 20px; border-bottom: 1px solid var(--color-border); font-family: var(--font-heading); font-size: 14px;">
+            <strong>${user.name}</strong>
+            <div style="font-size: 12px; color: var(--color-text-light);">${user.email}</div>
+        </div>
+        <a href="#" style="display: block; padding: 10px 20px; font-size: 13px; color: var(--color-text); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='var(--color-bg-cream)'; this.style.color='var(--color-primary)'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-text)'">
+            <i class="fas fa-user" style="margin-right: 10px; width: 16px;"></i> My Profile
+        </a>
+        <a href="#" style="display: block; padding: 10px 20px; font-size: 13px; color: var(--color-text); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='var(--color-bg-cream)'; this.style.color='var(--color-primary)'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-text)'">
+            <i class="fas fa-shopping-bag" style="margin-right: 10px; width: 16px;"></i> My Orders
+        </a>
+        <a href="#" style="display: block; padding: 10px 20px; font-size: 13px; color: var(--color-text); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='var(--color-bg-cream)'; this.style.color='var(--color-primary)'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-text)'">
+            <i class="fas fa-heart" style="margin-right: 10px; width: 16px;"></i> Wishlist
+        </a>
+        <div style="border-top: 1px solid var(--color-border); margin: 5px 0;"></div>
+        <a href="#" onclick="logoutUser(); return false;" style="display: block; padding: 10px 20px; font-size: 13px; color: var(--color-text); text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='var(--color-bg-cream)'; this.style.color='var(--color-primary)'" onmouseout="this.style.background='transparent'; this.style.color='var(--color-text)'">
+            <i class="fas fa-sign-out-alt" style="margin-right: 10px; width: 16px;"></i> Logout
+        </a>
+    `;
+    
+    // Position dropdown relative to auth link
+    const authLink = document.querySelector('.auth-link');
+    authLink.style.position = 'relative';
+    authLink.appendChild(dropdown);
+    
+    // Close dropdown when clicking outside
+    const closeDropdown = (e) => {
+        if (!dropdown.contains(e.target) && !authLink.contains(e.target)) {
+            dropdown.remove();
+            document.removeEventListener('click', closeDropdown);
+        }
+    };
+    
+    setTimeout(() => {
+        document.addEventListener('click', closeDropdown);
+    }, 0);
+}
+
+// Check for existing session on page load
+function checkExistingSession() {
+    const savedUser = localStorage.getItem('velvetsUser');
+    if (savedUser) {
+        try {
+            const user = JSON.parse(savedUser);
+            // Check if session is still valid (30 days)
+            const loginTime = new Date(user.loginTime);
+            const now = new Date();
+            const daysDiff = (now - loginTime) / (1000 * 60 * 60 * 24);
+            
+            if (daysDiff <= 30) {
+                updateAuthUI(user);
+            } else {
+                // Session expired
+                localStorage.removeItem('velvetsUser');
+                updateAuthUI(null);
+            }
+        } catch (e) {
+            console.error('Error parsing user data:', e);
+            localStorage.removeItem('velvetsUser');
+        }
+    }
+}
+
+// Initialize auth on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initAuthModal();
+    checkExistingSession();
+    
+    // Initialize Google Sign-In when page loads
+    if (document.getElementById('authModal')) {
+        initGoogleSignIn();
+    }
+});
 
 // ===== Preloader =====
 window.addEventListener('load', () => {
