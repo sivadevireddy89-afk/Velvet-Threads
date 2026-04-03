@@ -1844,6 +1844,18 @@ button {
     color: #4285F4;
 }
 
+/* Phone.email Button Styling */
+.pe_signin_button {
+    display: flex;
+    justify-content: center;
+    min-height: 48px;
+}
+
+.pe_signin_button iframe {
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
 .primary-btn {
     background: var(--color-primary);
     color: var(--color-white);
